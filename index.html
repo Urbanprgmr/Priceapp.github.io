@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Admin Section -->
+        <div class="admin-section">
+            <div id="adminLogin">
+                <h2>Admin Login</h2>
+                <input type="password" id="adminPassword" placeholder="Admin Password">
+                <button onclick="loginAdmin()">Login</button>
+                <div id="loginError" class="error-message"></div>
+            </div>
+            
+            <div id="adminControls" style="display: none;">
+                <h2>Admin Controls</h2>
+                <div class="form-group">
+                    <input type="text" id="itemName" placeholder="Item Name">
+                    <input type="number" id="itemPrice" placeholder="Price">
+                    <button onclick="addOrUpdateItem()">Save Item</button>
+                </div>
+                <div id="saveStatus" class="status-message"></div>
+            </div>
+        </div>
+
+        <!-- User View -->
+        <div class="user-section">
+            <h2>Current Prices</h2>
+            <div id="itemsList" class="items-container"></div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database-compat.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

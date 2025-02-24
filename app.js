@@ -1,12 +1,13 @@
 // Firebase Configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyDksaEMrHB5Wk4yWwg7GbKEeQlo0RZueq0",
-  authDomain: "price-list-542e6.firebaseapp.com",
-  projectId: "price-list-542e6",
-  storageBucket: "price-list-542e6.firebasestorage.app",
-  messagingSenderId: "1009713697691",
-  appId: "1:1009713697691:web:9ef1ad1aa4f0be214a473e",
-  measurementId: "G-HQLQS92RLV"
+   const firebaseConfig = {
+     apiKey: "AIzaSyBx2vOcHdHq3i6l7...YOUR_ACTUAL_KEY",
+     authDomain: "price-tracker-5b...YOUR_PROJECT.firebaseapp.com",
+     databaseURL: "https://price-tracker-5b...YOUR_PROJECT.firebaseio.com",
+     projectId: "price-tracker-5b...YOUR_PROJECT",
+     storageBucket: "price-tracker-5b....appspot.com",
+     messagingSenderId: "10987654321",
+     appId: "1:10987654321:web:abcd...YOUR_APP_ID"
+   };
 };
 
 // Initialize Firebase
@@ -104,5 +105,25 @@ function clearForm() {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+  // Modified login function
+   function loginAdmin() {
+     const password = document.getElementById('adminPassword').value;
+     console.log('Login attempt with password:', password); // Debug log
+
+     if(password === 'admin123') {
+       document.getElementById('adminControls').style.display = 'block';
+       document.getElementById('adminLogin').style.display = 'none';
+       console.log('Admin privileges granted');
+       
+       // Force reload items
+       database.ref('items').once('value').then((snapshot) => {
+         console.log('Database snapshot:', snapshot.val());
+         displayItems(snapshot.val());
+       });
+     } else {
+       console.error('Invalid password entered');
+       alert('Access Denied: Invalid Credentials');
+     }
+   }
     loadItems();
 });

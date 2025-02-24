@@ -117,3 +117,8 @@ button:hover {
         grid-template-columns: 1fr;
     }
 }
+#adminControls {
+     display: block !important; /* Force show for debugging */
+     opacity: 1;
+     transition: opacity 0.3s ease;
+}
